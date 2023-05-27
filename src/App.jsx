@@ -3,17 +3,27 @@ import HomePage from "./pages/HomePage/HomePage"
 import SeatsPage from "./pages/SeatsPage/SeatsPage"
 import SessionsPage from "./pages/SessionsPage/SessionsPage"
 import SuccessPage from "./pages/SuccessPage/SuccessPage"
+import {useState} from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
-    return (
-        <>
-           <NavContainer>CINEFLEX</NavContainer>
+    const [movie, setMovie] = useState(null);
+    const [session, setSession] = useState(null);
+    const [time, setTime] = useState(null);
+    const [seats, setSeats] = useState([]);
+    const [buyer, setBuyer] = useState("augusto");
+    const [cpf, setCpf] = useState("007.823.800-50");
 
-            <HomePage />
-            {/* <SeatsPage /> */}
-            {/* <SessionsPage /> */}
-            {/* <SuccessPage /> */}
-        </>
+    return (
+        <BrowserRouter>
+           <NavContainer>CINEFLEX</NavContainer>
+            <Routes>
+                <Route path="/" element={<HomePage setMovie={setMovie}/>}/>
+                <Route path="/sessions/:movieId" element={<SessionsPage movie={movie} setSession={setSession} setTime={setTime}/>}/>
+                <Route path="/seats/:sessionId" element={<SeatsPage movie={movie} session={session} time={time} seats={seats} setSeats={setSeats} />}/>
+                <Route path="/success" element={<SuccessPage movie={movie} session={session} time={time} seats={seats} buyer={buyer} cpf={cpf}/>}/>
+            </Routes>
+        </BrowserRouter>
     )
 }
 
