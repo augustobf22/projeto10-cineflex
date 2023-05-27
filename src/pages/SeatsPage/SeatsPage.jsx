@@ -5,6 +5,15 @@ import Form from './FormHandler';
 
 export default function SeatsPage(props) {
     const {sessionId} = useParams();
+    //const [seatColor, setSeatColor] = useState(undefined);
+    const colors = {
+        selected: 
+        {background: "#1AAE9E", border: "#0E7D71"},
+        available: 
+        {background: "#C3CFD9", border: "#7B8B99"}, 
+        unavailable: 
+        {background: "#FBE192", border: "#F7C52B"}
+    };
 
     //request list of seats
 
@@ -12,19 +21,19 @@ export default function SeatsPage(props) {
         <PageContainer>
             Selecione o(s) assento(s)
 
-            <SeatsList sessionId={sessionId} seats={props.seats} setSeats={props.setSeats} />
+            <SeatsList sessionId={sessionId} seats={props.seats} setSeats={props.setSeats} colors={colors}/>
 
             <CaptionContainer>
                 <CaptionItem>
-                    <CaptionCircle />
+                    <CaptionCircle color={colors.selected}/>
                     Selecionado
                 </CaptionItem>
                 <CaptionItem>
-                    <CaptionCircle />
+                    <CaptionCircle color={colors.available}/>
                     Disponível
                 </CaptionItem>
                 <CaptionItem>
-                    <CaptionCircle />
+                    <CaptionCircle color={colors.unavailable}/>
                     Indisponível
                 </CaptionItem>
             </CaptionContainer>
@@ -65,8 +74,8 @@ const CaptionContainer = styled.div`
     margin: 20px;
 `
 const CaptionCircle = styled.div`
-    border: 1px solid blue;         // Essa cor deve mudar
-    background-color: lightblue;    // Essa cor deve mudar
+    border: 1px solid ${props => props.color.border};         // Essa cor deve mudar
+    background-color: ${props => props.color.background};    // Essa cor deve mudar
     height: 25px;
     width: 25px;
     border-radius: 25px;

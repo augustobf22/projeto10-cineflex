@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import {useState} from 'react'
 
 const mockSeats = {
     "id": 1,
@@ -273,15 +274,22 @@ export default function SeatsList(props){
     //use props.sessionId to request get with axios
 
     function addSeat(s){
-        let nSeats = [...props.seats,s];
-        props.setSeats(nSeats);
-        //change colors
+        if(!s.isAvailable){
+            alert('Esse assento não está disponível!');
+        } else if (props.seats.includes(s.name)) {
+            let nSeats = [...props.seats];
+            nSeats.splice(nSeats.indexOf(s.name), 1);
+            props.setSeats(nSeats);
+        } else {
+            let nSeats = [...props.seats, s.name];
+            props.setSeats(nSeats);
+        }
     }
 
     return(
         <SeatsContainer>
             {mockSeats.seats.map(s => 
-                <SeatItem key={s.id} onClick={() => addSeat(s.name)}>{s.name}</SeatItem>
+                <SeatItem seat={s} colors={props.colors} selected={props.seats} key={s.id} onClick={() => addSeat(s)}>{s.name}</SeatItem>
                 )}
         </SeatsContainer>
     )
@@ -298,8 +306,8 @@ const SeatsContainer = styled.div`
 `
 
 const SeatItem = styled.div`
-    border: 1px solid blue;         // Essa cor deve mudar
-    background-color: lightblue;    // Essa cor deve mudar
+    background-color: ${props => !props.seat.isAvailable ? props.colors.unavailable.background : ( props.selected.includes(props.seat.name) ? props.colors.selected.background : props.colors.available.background) };
+    border: 1px solid ${props => !props.seat.isAvailable ? props.colors.unavailable.border : ( props.selected.includes(props.name) ? props.colors.selected.border : props.colors.available.border) };
     height: 25px;
     width: 25px;
     border-radius: 25px;
@@ -309,4 +317,8 @@ const SeatItem = styled.div`
     align-items: center;
     justify-content: center;
     margin: 5px 3px;
+
+    &:hover{
+        cursor: pointer;
+    }
 `

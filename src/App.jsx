@@ -21,7 +21,7 @@ export default function App() {
                 <Route path="/" element={<HomePage setMovie={setMovie}/>}/>
                 <Route path="/sessions/:movieId" element={<SessionsPage movie={movie} setSession={setSession} setTime={setTime}/>}/>
                 <Route path="/seats/:sessionId" element={<SeatsPage movie={movie} session={session} time={time} seats={seats} setSeats={setSeats} buyer={buyer} cpf={cpf} setBuyer={setBuyer} setCpf={setCpf}/>}/>
-                <Route path="/success" element={<SuccessPage movie={movie} session={session} time={time} seats={seats} buyer={buyer} cpf={cpf}/>}/>
+                <Route path="/success" element={<SuccessPage movie={movie} session={session} time={time} seats={seats} buyer={buyer} cpf={cpf} setMovie={setMovie} setSession={setSession} setTime={setTime} setSeats={setSeats} setBuyer={setBuyer} setCpf={setCpf}/>}/>
             </Routes>
         </BrowserRouter>
     )

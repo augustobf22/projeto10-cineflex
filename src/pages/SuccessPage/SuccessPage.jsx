@@ -1,7 +1,19 @@
 import styled from "styled-components"
-import {Link} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 export default function SuccessPage(props) {
+    console.log(props);
+    //create function to clear all setValues when going back to home and call it on the button
+    const navigate = useNavigate();
+    function reset(){
+        navigate(`/`);
+        props.setMovie(null);
+        props.setSession(null);
+        props.setTime(null);
+        props.setSeats([])
+        props.setBuyer("");
+        props.setCpf("");
+    }
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
@@ -25,9 +37,7 @@ export default function SuccessPage(props) {
                 <p>CPF: {props.cpf}</p>
             </TextContainer>
 
-            <Link to={`/`}>
-                <button>Voltar para Home</button>
-            </Link>
+            <button onClick={reset}>Voltar para Home</button>
             
         </PageContainer>
     )
@@ -48,6 +58,17 @@ const PageContainer = styled.div`
     }
     button {
         margin-top: 50px;
+        width: 225px;
+        height: 42px;
+
+        background: #E8833A;
+        border-radius: 3px;
+        border: none;
+        color: white;
+
+        &:hover{
+            cursor: pointer;
+        }
     }
     h1 {
         font-family: 'Roboto';
@@ -68,7 +89,9 @@ const TextContainer = styled.div`
     align-items: flex-start;
     margin-top: 30px;
     strong {
-        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 700;
         margin-bottom: 10px;
     }
 `
