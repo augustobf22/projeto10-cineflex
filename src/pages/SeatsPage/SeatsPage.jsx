@@ -1,6 +1,7 @@
 import styled from "styled-components"
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import SeatsList from "./ListSeats";
+import Form from './FormHandler';
 
 export default function SeatsPage(props) {
     const {sessionId} = useParams();
@@ -28,18 +29,7 @@ export default function SeatsPage(props) {
                 </CaptionItem>
             </CaptionContainer>
 
-            <FormContainer>
-                Nome do Comprador:
-                <input placeholder="Digite seu nome..." />
-
-                CPF do Comprador:
-                <input placeholder="Digite seu CPF..." />
-
-                <Link to={`/success`}>
-                    <button>Reservar Assento(s)</button>
-                </Link>
-                
-            </FormContainer>
+            <Form buyer={props.buyer} cpf={props.cpf} setBuyer={props.setBuyer} setCpf={props.setCpf}/>
 
             <FooterContainer>
                 <div>
@@ -90,20 +80,6 @@ const CaptionItem = styled.div`
     flex-direction: column;
     align-items: center;
     font-size: 12px;
-`
-const FormContainer = styled.div`
-    width: calc(100vw - 40px); 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 20px 0;
-    font-size: 18px;
-    button {
-        align-self: center;
-    }
-    input {
-        width: calc(100vw - 60px);
-    }
 `
 
 const FooterContainer = styled.div`

@@ -11,8 +11,8 @@ export default function App() {
     const [session, setSession] = useState(null);
     const [time, setTime] = useState(null);
     const [seats, setSeats] = useState([]);
-    const [buyer, setBuyer] = useState("augusto");
-    const [cpf, setCpf] = useState("007.823.800-50");
+    const [buyer, setBuyer] = useState("");
+    const [cpf, setCpf] = useState("");
 
     return (
         <BrowserRouter>
@@ -20,7 +20,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<HomePage setMovie={setMovie}/>}/>
                 <Route path="/sessions/:movieId" element={<SessionsPage movie={movie} setSession={setSession} setTime={setTime}/>}/>
-                <Route path="/seats/:sessionId" element={<SeatsPage movie={movie} session={session} time={time} seats={seats} setSeats={setSeats} />}/>
+                <Route path="/seats/:sessionId" element={<SeatsPage movie={movie} session={session} time={time} seats={seats} setSeats={setSeats} buyer={buyer} cpf={cpf} setBuyer={setBuyer} setCpf={setCpf}/>}/>
                 <Route path="/success" element={<SuccessPage movie={movie} session={session} time={time} seats={seats} buyer={buyer} cpf={cpf}/>}/>
             </Routes>
         </BrowserRouter>

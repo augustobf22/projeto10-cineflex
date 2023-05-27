@@ -2,8 +2,6 @@ import styled from "styled-components"
 import {Link} from 'react-router-dom'
 
 export default function SuccessPage(props) {
-    console.log(props);
-
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
@@ -17,7 +15,7 @@ export default function SuccessPage(props) {
             <TextContainer>
                 <strong><p>Ingressos</p></strong>
                 {props.seats.map(s =>
-                    <p>Assento {s}</p>
+                    <p key={s}>Assento {s}</p>
                     )}
             </TextContainer>
 
