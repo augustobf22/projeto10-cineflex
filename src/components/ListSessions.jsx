@@ -32,10 +32,15 @@ export default function SessionsList(props){
             {props.sessionsList.days.map(day =>
                 <SessionContainer key={day.id} data-test="movie-day">
                     {day.weekday} - {day.date}
-                    <ButtonsContainer data-test="showtime">
+                    <ButtonsContainer>
                         {day.showtimes.map(t => 
                             <Link to={`/assentos/${t.id}`} key={t.id}>
-                                <button  onClick={e => sessionInfo(day, t)}>{t.name}</button>
+                                <button  
+                                    onClick={e => sessionInfo(day, t)}
+                                    data-test="showtime"
+                                >
+                                    {t.name}
+                                </button>
                             </Link>
                         )}
                     </ButtonsContainer>                   
