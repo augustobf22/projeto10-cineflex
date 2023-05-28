@@ -18,14 +18,13 @@ export default function Form(props){
 
     function postSeats(){
         const promise = axios.post(url, props.seatObject);
-        promise.then(console.log("sucesso"));
+        promise.then(()=>navigate(`/successo`));
         promise.catch(console.log("erro"));
     }
 
     function sendForm(event){
         event.preventDefault();
         postSeats();
-        navigate(`/successo`);
     }
 
     //substituir link por navigate
