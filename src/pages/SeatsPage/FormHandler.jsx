@@ -1,9 +1,12 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Form(props){
+    const navigate = useNavigate();  
+    
     function sendForm(event){
-    event.preventDefault();  
+        event.preventDefault();
+        navigate(`/success`);
     }
 
     //substituir link por navigate
@@ -12,16 +15,14 @@ export default function Form(props){
                 <label htmlFor="buyer">
                     Nome do comprador:
                 </label>
-                <input placeholder="Digite seu nome..." id="buyer" value={props.buyer} onChange={e => props.setBuyer(e.target.value)} required/>
+                <input required placeholder="Digite seu nome..." id="buyer" value={props.buyer} onChange={e => props.setBuyer(e.target.value)} />
 
                 <label htmlFor="cpf">
                     CPF do comprador:
                 </label>
-                <input placeholder="Digite seu CPF..." id="cpf" value={props.cpf} onChange={e => props.setCpf(e.target.value)} required/>
+                <input required placeholder="Digite seu CPF..." id="cpf" value={props.cpf} onChange={e => props.setCpf(e.target.value)} />
 
-                <Link to={`/success`}>
-                    <button type="submit">Reservar Assento(s)</button>
-                </Link>
+                <button type="submit">Reservar Assento(s)</button>
         </FormContainer>
     )
 }
@@ -58,14 +59,15 @@ const FormContainer = styled.form`
     }
     input {
         width: calc(100vw - 60px);
+
         font-family: 'Roboto';
-        font-style: normal;
+        font-style: italic;
         font-weight: 400;
         font-size: 18px;
         line-height: 21px;
         display: flex;
         align-items: center;
 
-        color: #293845;
+        color: #AFAFAF;
     }
 `

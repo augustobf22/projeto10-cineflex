@@ -9,7 +9,7 @@ export default function SessionsPage(props) {
         <PageContainer>
             Selecione o horário
             <div>
-                <SessionsList movie={props.movie} setSession={props.setSession} setTime={props.setTime}/>
+                <SessionsList movie={props.movie} setSession={props.setSession} setTime={props.setTime} sessionsList={props.sessionsList} setSessionsList={props.setSessionsList}/>
             </div>
 
             <FooterContainer>

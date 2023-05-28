@@ -5,6 +5,7 @@ export default function SuccessPage(props) {
     console.log(props);
     //create function to clear all setValues when going back to home and call it on the button
     const navigate = useNavigate();
+    
     function reset(){
         navigate(`/`);
         props.setMovie(null);

@@ -7,7 +7,7 @@ export default function HomePage(props) {
             Selecione o filme
 
             <ListContainer>
-                <MoviesList setMovie={props.setMovie}/>
+                <MoviesList movie={props.movie} setMovie={props.setMovie}/>
             </ListContainer>
 
         </PageContainer>
