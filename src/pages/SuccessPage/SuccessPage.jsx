@@ -2,7 +2,7 @@ import styled from "styled-components"
 import {useNavigate} from 'react-router-dom'
 
 export default function SuccessPage(props) {
-    console.log(props);
+    //console.log(props);
     //create function to clear all setValues when going back to home and call it on the button
     const navigate = useNavigate();
     
@@ -10,35 +10,44 @@ export default function SuccessPage(props) {
         navigate(`/`);
         props.setMovie(null);
         props.setSession(null);
+        props.setSessionsList(null);
         props.setTime(null);
-        props.setSeats([])
+        props.setSeats([]);
+        props.setSeatsList(null);
+        props.setSeatObject({ids:"", name:"", cpf:""});
         props.setBuyer("");
         props.setCpf("");
     }
+
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
 
-            <TextContainer>
+            <TextContainer data-test="movie-info">
                 <strong><p>Filme e sessão</p></strong>
                 <p>{props.movie.title}</p>
                 <p>{props.session.date} - {props.time.name}</p>
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="seats-info">
                 <strong><p>Ingressos</p></strong>
                 {props.seats.map(s =>
                     <p key={s}>Assento {s}</p>
                     )}
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="client-info">
                 <strong><p>Comprador</p></strong>
                 <p>Nome: {props.buyer}</p>
                 <p>CPF: {props.cpf}</p>
             </TextContainer>
 
-            <button onClick={reset}>Voltar para Home</button>
+            <button 
+                onClick={reset}
+                data-test="go-home-btn"
+            >
+                Voltar para Home
+            </button>
             
         </PageContainer>
     )

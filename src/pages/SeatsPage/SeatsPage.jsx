@@ -1,11 +1,10 @@
 import styled from "styled-components"
-import { useParams } from 'react-router-dom';
-import SeatsList from "./ListSeats";
-import Form from './FormHandler';
+import SeatsList from "../../components/ListSeats";
+import Form from '../../components/FormHandler';
 
 export default function SeatsPage(props) {
-    const {sessionId} = useParams();
-    //const [seatColor, setSeatColor] = useState(undefined);
+    const sessionId = props.time.id;
+
     const colors = {
         selected: 
         {background: "#1AAE9E", border: "#0E7D71"},
@@ -15,13 +14,11 @@ export default function SeatsPage(props) {
         {background: "#FBE192", border: "#F7C52B"}
     };
 
-    //request list of seats
-
     return (
         <PageContainer>
             Selecione o(s) assento(s)
 
-            <SeatsList sessionId={sessionId} seats={props.seats} setSeats={props.setSeats} colors={colors}/>
+            <SeatsList sessionId={sessionId} seats={props.seats} setSeats={props.setSeats} seatsList={props.seatsList} setSeatsList={props.setSeatsList} seatObject={props.seatObject} setSeatObject={props.setSeatObject} colors={colors}/>
 
             <CaptionContainer>
                 <CaptionItem>
@@ -38,9 +35,9 @@ export default function SeatsPage(props) {
                 </CaptionItem>
             </CaptionContainer>
 
-            <Form buyer={props.buyer} cpf={props.cpf} setBuyer={props.setBuyer} setCpf={props.setCpf}/>
+            <Form buyer={props.buyer} cpf={props.cpf} setBuyer={props.setBuyer} setCpf={props.setCpf} seatObject={props.seatObject} setSeatObject={props.setSeatObject}/>
 
-            <FooterContainer>
+            <FooterContainer data-test="footer">
                 <div>
                     <img src={props.movie.posterURL} alt="poster" />
                 </div>

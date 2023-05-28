@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import {Link} from "react-router-dom"
 import { useEffect } from 'react';
-import loading from '../../assets/loading.gif';
+import loading from '../assets/loading.gif';
 import axios from 'axios';
 
 //request sessions list with axios
@@ -14,7 +14,6 @@ export default function SessionsList(props){
 		const request = axios.get(url);
 
 		request.then(r => {
-            console.log(r.data);
 			props.setSessionsList(r.data);
 		});
 	}, []);
@@ -31,11 +30,11 @@ export default function SessionsList(props){
     return(
         <>
             {props.sessionsList.days.map(day =>
-                <SessionContainer key={day.id}>
+                <SessionContainer key={day.id} data-test="movie-day">
                     {day.weekday} - {day.date}
-                    <ButtonsContainer >
+                    <ButtonsContainer data-test="showtime">
                         {day.showtimes.map(t => 
-                            <Link to={`/seats/${t.id}`} key={t.id}>
+                            <Link to={`/assentos/${t.id}`} key={t.id}>
                                 <button  onClick={e => sessionInfo(day, t)}>{t.name}</button>
                             </Link>
                         )}

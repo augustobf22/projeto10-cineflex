@@ -14,7 +14,9 @@ export default function App() {
     const [sessionsList, setSessionsList] = useState(null);
     const [session, setSession] = useState(null);
     const [time, setTime] = useState(null);
+    const [seatsList, setSeatsList] = useState(null);
     const [seats, setSeats] = useState([]);
+    const [seatObject, setSeatObject] = useState({ids:"", name:"", cpf:""});
     const [buyer, setBuyer] = useState("");
     const [cpf, setCpf] = useState("");
 
@@ -23,9 +25,9 @@ export default function App() {
            <NavContainer>CINEFLEX</NavContainer>
             <Routes>
                 <Route path="/" element={<HomePage movie={movie} setMovie={setMovie}/>}/>
-                <Route path="/sessions/:movieId" element={<SessionsPage movie={movie} sessionsList={sessionsList} setSessionsList={setSessionsList} setSession={setSession} setTime={setTime}/>}/>
-                <Route path="/seats/:sessionId" element={<SeatsPage movie={movie} session={session}  time={time} seats={seats} setSeats={setSeats} buyer={buyer} cpf={cpf} setBuyer={setBuyer} setCpf={setCpf}/>}/>
-                <Route path="/success" element={<SuccessPage movie={movie} session={session} time={time} seats={seats} buyer={buyer} cpf={cpf} setMovie={setMovie} setSession={setSession} setTime={setTime} setSeats={setSeats} setBuyer={setBuyer} setCpf={setCpf}/>}/>
+                <Route path="/sessoes/:idFilme" element={<SessionsPage movie={movie} sessionsList={sessionsList} setSessionsList={setSessionsList} setSession={setSession} setTime={setTime}/>}/>
+                <Route path="/assentos/:idSessao" element={<SeatsPage movie={movie} session={session}  time={time} seats={seats} setSeats={setSeats} seatsList={seatsList} setSeatsList={setSeatsList} buyer={buyer} cpf={cpf} setBuyer={setBuyer} setCpf={setCpf} seatObject={seatObject} setSeatObject={setSeatObject}/>}/>
+                <Route path="/successo" element={<SuccessPage movie={movie} session={session} time={time} seats={seats} buyer={buyer} cpf={cpf} setMovie={setMovie} setSession={setSession} setSessionsList={setSessionsList} setTime={setTime} setSeats={setSeats} setSeatsList={setSeatsList} setBuyer={setBuyer} setCpf={setCpf} setSeatObject={setSeatObject}/>}/>
             </Routes>
         </BrowserRouter>
     )

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import MoviesList from './ListMovies.jsx'
+import MoviesList from '../../components/ListMovies.jsx'
 
 export default function HomePage(props) {
     return (

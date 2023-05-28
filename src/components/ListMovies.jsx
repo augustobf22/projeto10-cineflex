@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useEffect } from 'react';
 import {Link} from "react-router-dom";
-import loading from '../../assets/loading.gif';
+import loading from '../assets/loading.gif';
 import axios from 'axios';
 
 export default function MoviesList(props){
@@ -20,8 +20,8 @@ export default function MoviesList(props){
     return(
         <>
             {props.movie.map(m => (
-                <MovieContainer key={m.id}>
-                    <Link to={`/sessions/${m.id}`}>
+                <MovieContainer key={m.id} data-test="movie">
+                    <Link to={`/sessoes/${m.id}`}>
                         <img src={m.posterURL} alt="poster" onClick={() => {props.setMovie(m)}}/>
                     </Link>
                 </MovieContainer>

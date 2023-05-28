@@ -1,10 +1,7 @@
 import styled from "styled-components"
-import { useParams } from 'react-router-dom';
-import SessionsList from './ListSessions.jsx'
+import SessionsList from '../../components/ListSessions.jsx'
 
 export default function SessionsPage(props) {
-    const {movieId} = useParams();
-
     return (
         <PageContainer>
             Selecione o horário
@@ -12,7 +9,7 @@ export default function SessionsPage(props) {
                 <SessionsList movie={props.movie} setSession={props.setSession} setTime={props.setTime} sessionsList={props.sessionsList} setSessionsList={props.setSessionsList}/>
             </div>
 
-            <FooterContainer>
+            <FooterContainer data-test="footer">
                 <div>
                     <img src={props.movie.posterURL} alt="poster" />
                 </div>
