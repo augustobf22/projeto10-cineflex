@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Form(props){
@@ -18,7 +18,7 @@ export default function Form(props){
 
     function postSeats(){
         const promise = axios.post(url, props.seatObject);
-        promise.then(()=>navigate(`/successo`));
+        promise.then(()=>{navigate("/successo")});
         promise.catch(console.log("erro"));
     }
 
@@ -54,12 +54,13 @@ export default function Form(props){
                     data-test="client-cpf"
                 />
 
-                <button 
-                    type="submit"
-                    data-test="book-seat-btn"
-                >
-                    Reservar Assento(s)
-                </button>
+                    <button 
+                        type="submit"
+                        data-test="book-seat-btn"
+                    >
+                        Reservar Assento(s)
+                    </button>    
+                
         </FormContainer>
     )
 }
