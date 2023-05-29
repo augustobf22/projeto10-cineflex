@@ -27,7 +27,7 @@ export default function App() {
                 <Route path="/" element={<HomePage movie={movie} setMovie={setMovie}/>}/>
                 <Route path="/sessoes/:idFilme" element={<SessionsPage movie={movie} sessionsList={sessionsList} setSessionsList={setSessionsList} setSession={setSession} setTime={setTime}/>}/>
                 <Route path="/assentos/:idSessao" element={<SeatsPage movie={movie} session={session}  time={time} seats={seats} setSeats={setSeats} seatsList={seatsList} setSeatsList={setSeatsList} buyer={buyer} cpf={cpf} setBuyer={setBuyer} setCpf={setCpf} seatObject={seatObject} setSeatObject={setSeatObject}/>}/>
-                <Route path="/successo" element={<SuccessPage movie={movie} session={session} time={time} seats={seats} buyer={buyer} cpf={cpf} setMovie={setMovie} setSession={setSession} setSessionsList={setSessionsList} setTime={setTime} setSeats={setSeats} setSeatsList={setSeatsList} setBuyer={setBuyer} setCpf={setCpf} setSeatObject={setSeatObject}/>}/>
+                <Route path="/sucesso" element={<SuccessPage movie={movie} session={session} time={time} seats={seats} buyer={buyer} cpf={cpf} setMovie={setMovie} setSession={setSession} setSessionsList={setSessionsList} setTime={setTime} setSeats={setSeats} setSeatsList={setSeatsList} setBuyer={setBuyer} setCpf={setCpf} setSeatObject={setSeatObject}/>}/>
             </Routes>
         </BrowserRouter>
     )

@@ -18,7 +18,7 @@ export default function Form(props){
 
     function postSeats(){
         const promise = axios.post(url, props.seatObject);
-        promise.then(()=>{navigate("/successo")});
+        promise.then(()=>{navigate("/sucesso")});
         promise.catch(console.log("erro"));
     }
 
